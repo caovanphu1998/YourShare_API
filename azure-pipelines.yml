@@ -18,6 +18,16 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'run'
+    feedsToUse: 'select'
+    versioningScheme: 'off'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    feedsToUse: 'select'
+    versioningScheme: 'off'
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'publish'
     publishWebProjects: true
     feedsToUse: 'select'
