@@ -23,9 +23,8 @@ steps:
     feedsToUse: 'select'
     versioningScheme: 'off'
 
-- task: PublishBuildArtifacts@1
+- task: IISWebAppDeploymentOnMachineGroup@0
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    webSiteName: Default Web Site
+    package: '$(System.DefaultWorkingDirectory)\**\*.zip' 
 
