@@ -2,7 +2,7 @@ pool:
   vmImage: vs2017-win2016
 
 variables:
-  solution: './ClientLibrary/Samples/ClientSamples.sln'
+  solution: './StockManager.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
