@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
+﻿using System.Threading.Tasks;
 using Equinox.Application.Interfaces;
+using Equinox.Application.ViewModels;
 using Equinox.Domain.ApiResponse;
 using Equinox.Domain.Interfaces;
 using Equinox.Domain.Models;
-using Equinox.Infra.Data.Repository;
-using Equinox.Infra.Data.UoW;
 using Microsoft.EntityFrameworkCore;
 
 namespace Equinox.Application.Services
@@ -25,12 +19,41 @@ namespace Equinox.Application.Services
             _CompanyRepository = CompanyRepository;
         }
 
+        public async Task<string> CreateCompany(CompanyCreateModel model)
+        {
+            var company = new Company();
+            company.CompanyName = model.CompanyName;
+            company.Address = model.Address;
+            company.Capital = model.Capital;
+            company.TotalShares = model.TotalShares;
+            company.OptionPoll = model.OptionPoll;
+            _CompanyRepository.Insert(company);
+            await _UnitOfWork.CommitAsyn();
+            return ApiResponse.Ok();
+        }
+
         public async Task<string> GetDetail()
         {
             var test = _CompanyRepository.GetAll();
             int count = await test.CountAsync();
+            return ApiResponse.Ok(test, count);
+        }
+
+        public async Task<string> UpdateCompany(CompanyUpdateModel model)
+        {
+            var company = _CompanyRepository.GetById(model.CompanyId);
+            if (company == null)
+            {
+                return ApiResponse.Error();
+            }
+            company.CompanyName = model.CompanyName;
+            company.Address = model.Address;
+            company.Capital = model.Capital;
+            company.TotalShares = model.TotalShares;
+            company.OptionPoll = model.OptionPoll;
+            _CompanyRepository.Insert(company);
             await _UnitOfWork.CommitAsyn();
-            return ApiResponse.Ok(test,count);
+            return ApiResponse.Ok();
         }
     }
 }

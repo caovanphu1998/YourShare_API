@@ -6,5 +6,6 @@ namespace Equinox.Domain.GenericResult
 {
     public class GenericResult
     {
+        
     }
 }

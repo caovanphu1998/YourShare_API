@@ -39,7 +39,7 @@ namespace WebApplication1
                         Url = "https://www.facebook.com/caovanphu1998"
                     },
                     Description = "Swagger Rest API",
-                    Title = "Project",
+                    Title = "YourShares",
                     Version = "0.1",
                 });
             });

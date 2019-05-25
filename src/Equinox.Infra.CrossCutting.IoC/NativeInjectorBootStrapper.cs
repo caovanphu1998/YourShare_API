@@ -28,7 +28,11 @@ namespace Equinox.Infra.CrossCutting.IoC
             services.AddTransient<ICompanyService, CompanyService>();
 
 
-            services.AddTransient<IRepository<Company>, Repository<Company>>();
+            services.AddScoped<IRepository<Company>, Repository<Company>>();
+            services.AddScoped<IRepository<Administrator>, Repository<Administrator>>();
+            services.AddScoped<IRepository<ShareAccounting>, Repository<ShareAccounting>>();
+            services.AddScoped<IRepository<Shareholder>, Repository<Shareholder>>();
+            services.AddScoped<IRepository<Transaction>, Repository<Transaction>>();
 
 
             // Infra - Data

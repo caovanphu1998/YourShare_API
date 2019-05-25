@@ -16,6 +16,13 @@ namespace Equinox.Domain.ApiResponse
             response.IsSuccess = true;
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+        public static string Ok()
+        {
+            var response = new Response();
+            response.IsSuccess = true;
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
         public static string Error()
         {
             var response = new Response();
