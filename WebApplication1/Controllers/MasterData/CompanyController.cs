@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApiConfigName;
 using Equinox.Application.Interfaces;
+using Equinox.Application.SearchModels;
 using Equinox.Application.Services;
 using Equinox.Application.ViewModels;
 using Equinox.Infra.Data.UoW;
@@ -29,6 +30,19 @@ namespace WebApplication1.Controllers.MasterData
         }
         #endregion
 
+        #region Search Company        
+        /// <summary>
+        /// Gets all company.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(Company.SearchCompany)]
+        public async Task<string> SearchCompany([FromQuery] CompanySearchModel model)
+        {
+            return await _customerAppService.SearchCompany(model);
+        }
+        #endregion
+
         #region GetAllCompany        
         /// <summary>
         /// Gets all company.
@@ -38,7 +52,20 @@ namespace WebApplication1.Controllers.MasterData
         [Route(Company.GetAllCompany)]
         public async Task<string> GetAllCompany()
         {
-            return await _customerAppService.GetDetail();
+            return await _customerAppService.GetAllCompany();
+        }
+        #endregion
+        
+        #region GetCompanyById        
+        /// <summary>
+        /// Gets all company.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(Company.GetByID)]
+        public async Task<string> GeCompanyById(Guid Id)
+        {
+            return await _customerAppService.GetCompanyById(Id);
         }
         #endregion
 

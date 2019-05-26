@@ -23,11 +23,12 @@ namespace Equinox.Domain.ApiResponse
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
-        public static string Error()
+        public static string Error(string error)
         {
             var response = new Response();
             response.Count = 0;
             response.IsSuccess = false;
+            response.Message = error;
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
     }

@@ -25,7 +25,6 @@ namespace Equinox.Infra.Data.UoW
         public void Dispose()
         {
             Context.Dispose();
-
         }
     }
 }
