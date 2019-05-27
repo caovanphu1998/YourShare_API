@@ -41,5 +41,12 @@ namespace Equinox.Application.Interfaces
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         Task<string> GetCompanyById(Guid id);
+
+        /// <summary>
+        /// Deletes the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        Task<string> DeleteById(Guid id);
     }
 }

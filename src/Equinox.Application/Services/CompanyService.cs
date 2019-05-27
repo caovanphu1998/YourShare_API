@@ -107,5 +107,17 @@ namespace Equinox.Application.Services
             }
             return ApiResponse.Ok(company, 1);
         }
+
+        public async Task<string> DeleteById(Guid id)
+        {
+            var company = _CompanyRepository.GetById(id);
+            if (company == null)
+            {
+                return ApiResponse.Error("Company Not Exits");
+            }
+            _CompanyRepository.Delete(company);
+            await _UnitOfWork.CommitAsyn();
+            return ApiResponse.Ok();
+        }
     }
 }

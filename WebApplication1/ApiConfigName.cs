@@ -13,8 +13,10 @@ namespace ApiConfigName
 
         public const string GetByID = "company/getbyid";
 
-        public const string Create = "company/create";
+        public const string Create = "company";
 
-        public const string Update = "company/update";
+        public const string Update = "company";
+
+        public const string Delete = "company";
     }
 }

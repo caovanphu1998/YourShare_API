@@ -63,7 +63,7 @@ namespace WebApplication1.Controllers.MasterData
         /// <returns></returns>
         [HttpGet]
         [Route(Company.GetByID)]
-        public async Task<string> GeCompanyById(Guid Id)
+        public async Task<string> GetCompanyById(Guid Id)
         {
             return await _customerAppService.GetCompanyById(Id);
         }
@@ -94,6 +94,19 @@ namespace WebApplication1.Controllers.MasterData
         public async Task<string> UpdateCompany([FromBody]CompanyUpdateModel model)
         {
             return await _customerAppService.UpdateCompany(model);
+        }
+        #endregion
+
+        #region DeleteCompanyById        
+        /// <summary>
+        /// Gets all company.
+        /// </summary>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route(Company.Delete)]
+        public async Task<string> DeleteCompanyById(Guid Id)
+        {
+            return await _customerAppService.DeleteById(Id);
         }
         #endregion
     }
